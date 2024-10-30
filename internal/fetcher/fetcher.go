@@ -15,11 +15,11 @@ import (
 )
 
 const (
-	requestPerSecond = 1 //4
+	requestPerSecond = 4
 	backoffSecs      = 150
 	maxRetries       = 3
 	retryDelaySec    = 5
-	workers          = 1 //10
+	workers          = 10
 	resultBuffer     = 100
 	idleConnTimeout  = backoffSecs * 2
 )
