@@ -15,13 +15,13 @@ import (
 )
 
 const (
-	requestPerSecond = 4
-	backoffSecs      = 150
-	maxRetries       = 3
-	retryDelaySec    = 5
-	workers          = 10
-	resultBuffer     = 100
-	idleConnTimeout  = backoffSecs * 2
+	requestsPerSecond = 4   // making 4 requests per second
+	backoffSecs       = 150 // found that ~150s is a good balance between rate limiting and not waiting too long
+	maxRetries        = 3
+	retryDelaySec     = 5
+	workers           = 10
+	resultBuffer      = 100
+	idleConnTimeout   = backoffSecs * 2
 )
 
 type FetcherConfig struct {
@@ -53,18 +53,17 @@ type backoffManager struct {
 	mutex    sync.Mutex
 	signal   chan struct{}
 }
-
 type FetchResult struct {
-	URL        string    `json:"url"`
-	Content    string    `json:"content"`
-	FetchTime  time.Time `json:"fetch_time"`
-	Error      string    `json:"error,omitempty"`
-	RetryCount int       `json:"retry_count,omitempty"`
+	URL        string
+	Content    string
+	FetchTime  time.Time
+	Error      string
+	RetryCount int
 }
 
 func getDefaultConfig() FetcherConfig {
 	return FetcherConfig{
-		RequestsPerSecond: requestPerSecond,
+		RequestsPerSecond: requestsPerSecond,
 		BackoffDuration:   backoffSecs * time.Second,
 		MaxRetries:        maxRetries,
 		RetryDelay:        retryDelaySec * time.Second,

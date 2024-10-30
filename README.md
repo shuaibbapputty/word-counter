@@ -17,16 +17,36 @@ Clone and setup:
  go mod download
 ```
 
+2. Build:
+   
+   For current platform:
+   ```bash
+   make build
+   ```
+   
+   For all platforms:
+   ```bash
+   make build-all
+   ```
+
+   Built binaries will be available in the `bin/` directory:
+   - Linux: `counter-linux-amd64`, `counter-linux-arm64`
+   - macOS: `counter-darwin-amd64`, `counter-darwin-arm64`
+   - Windows: `counter-windows-amd64.exe`
+
 ## Usage
 
-1. Using Make:
+1. Using pre-built binary:
+   ```bash
+   ./bin/counter
+   ```
 
+2. Using Make:
    ```bash
    make run
    ```
 
-   Or use direct Go command:
-
+3. Using Go directly:
    ```bash
    go run cmd/counter/main.go
    ```

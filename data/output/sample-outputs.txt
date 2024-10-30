@@ -1,0 +1,54 @@
+go run cmd/counter/main.go
+Select the number of URLs to process:
+1. 1,000 URLs
+2. 10,000 URLs
+3. 40,000 URLs
+Enter your choice (1, 2, or 3): 1
+2024/10/30 22:51:55 Program started at: 2024-10-30T22:51:55+04:00
+
+Final Results:
+{
+  "top_words": [
+    {
+      "the": 22170
+    },
+    {
+      "and": 9438
+    },
+    {
+      "that": 4898
+    },
+    {
+      "for": 4452
+    },
+    {
+      "with": 3265
+    },
+    {
+      "you": 2922
+    },
+    {
+      "will": 2079
+    },
+    {
+      "its": 2070
+    },
+    {
+      "but": 1962
+    },
+    {
+      "this": 1845
+    }
+  ],
+  "metrics": {
+    "duration_seconds": 250.990376542,
+    "processed": 1000,
+    "errors": 0,
+    "rate_limited": 0
+  }
+}
+
+
+
+
+

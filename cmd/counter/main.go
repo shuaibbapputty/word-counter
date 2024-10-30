@@ -11,6 +11,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/schollz/progressbar/v3"
 	"github.com/shuaibbapputty/word-counter/internal/fetcher"
 	"github.com/shuaibbapputty/word-counter/internal/processor"
 )
@@ -34,9 +35,12 @@ func main() {
 	startTime := time.Now()
 	log.Printf("Program started at: %v", startTime.Format(time.RFC3339))
 
+	bar := progressbar.Default(int64(len(urls)), "Processing URLs")
+
 	ctx, cancel := context.WithTimeout(context.Background(), executionTimeout)
 	defer cancel()
 
+	// Get the validated words from the bank of words
 	wordBank, err := initializeWordBank()
 	if err != nil {
 		log.Fatalf("Failed to initialize word bank: %v", err)
@@ -45,6 +49,7 @@ func main() {
 	pool := processor.NewWorkerPool(wordBank, defaultNumWorkers)
 	pool.Start()
 
+	// initialize the struct to fetch the urls
 	f := fetcher.NewFetcher()
 
 	var wg sync.WaitGroup
@@ -76,6 +81,7 @@ func main() {
 				return
 			default:
 				pool.Submit(result.Content)
+				bar.Add(1)
 			}
 		}
 	}()
@@ -99,7 +105,7 @@ func main() {
 
 	<-done
 
-	finalWordCounts := wordCounter.GetTopWordCounts(10)
+	finalWordCounts := wordCounter.GetTopWordCounts(10) // get the top 10 words
 	printFinalResults(startTime, finalWordCounts, f)
 }
 
