@@ -81,7 +81,9 @@ func main() {
 				return
 			default:
 				pool.Submit(result.Content)
-				bar.Add(1)
+				if err := bar.Add(1); err != nil {
+					log.Printf("Failed to update progress bar: %v", err)
+				}
 			}
 		}
 	}()

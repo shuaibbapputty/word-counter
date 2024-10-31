@@ -18,18 +18,21 @@ Clone and setup:
 ```
 
 2. Build:
-   
+
    For current platform:
+
    ```bash
    make build
    ```
-   
+
    For all platforms:
+
    ```bash
    make build-all
    ```
 
    Built binaries will be available in the `bin/` directory:
+
    - Linux: `counter-linux-amd64`, `counter-linux-arm64`
    - macOS: `counter-darwin-amd64`, `counter-darwin-arm64`
    - Windows: `counter-windows-amd64.exe`
@@ -37,25 +40,28 @@ Clone and setup:
 ## Usage
 
 1. Using pre-built binary:
+
    ```bash
    ./bin/counter
    ```
 
 2. Using Make:
+
    ```bash
    make run
    ```
 
 3. Using Go directly:
+
    ```bash
    go run cmd/counter/main.go
    ```
 
-2. Follow the prompts to select URL dataset size:
+4. Follow the prompts to select URL dataset size:
 
-- 1: Process 1,000 urls
-- 2: Process 10,000 urls
-- 3: Process 40,000 urls
+- 1: Process 1,000 urls (can take about 250 - 500 seconds)
+- 2: Process 10,000 urls (can take ~ 1.5 hours)
+- 3: Process 40,000 urls (can take ~ 6 hours)
 
 ## Project Structure
 

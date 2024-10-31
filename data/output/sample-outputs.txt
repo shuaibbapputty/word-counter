@@ -4,13 +4,14 @@ Select the number of URLs to process:
 2. 10,000 URLs
 3. 40,000 URLs
 Enter your choice (1, 2, or 3): 1
-2024/10/30 22:51:55 Program started at: 2024-10-30T22:51:55+04:00
+2024/10/31 10:13:28 Program started at: 2024-10-31T10:13:28+04:00
+Processing URLs 100% |████████████████████████████████████████████| (1000/1000, 2 it/s)           
 
 Final Results:
 {
   "top_words": [
     {
-      "the": 22170
+      "the": 22174
     },
     {
       "and": 9438
@@ -22,6 +23,9 @@ Final Results:
       "for": 4452
     },
     {
+      "its": 3745
+    },
+    {
       "with": 3265
     },
     {
@@ -31,9 +35,6 @@ Final Results:
       "will": 2079
     },
     {
-      "its": 2070
-    },
-    {
       "but": 1962
     },
     {
@@ -41,14 +42,116 @@ Final Results:
     }
   ],
   "metrics": {
-    "duration_seconds": 250.990376542,
+    "duration_seconds": 400.844005125,
     "processed": 1000,
     "errors": 0,
-    "rate_limited": 0
+    "rate_limited": 8
   }
 }
 
 
 
+go run cmd/counter/main.go
+Select the number of URLs to process:
+1. 1,000 URLs
+2. 10,000 URLs
+3. 40,000 URLs
+Enter your choice (1, 2, or 3): 2
+2024/10/30 22:51:55 Program started at: 2024-10-30T23:01:55+04:00
+
+Processing URLs 100% |███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| (10000/10000, 2 it/s)
+
+Final Results:
+{
+  "top_words": [
+    {
+      "the": 219608
+    },
+    {
+      "and": 100591
+    },
+    {
+      "that": 49293
+    },
+    {
+      "for": 46427
+    },
+    {
+      "with": 34320
+    },
+    {
+      "you": 30837
+    },
+    {
+      "its": 22208
+    },
+    {
+      "will": 21419
+    },
+    {
+      "but": 20446
+    },
+    {
+      "this": 18380
+    }
+  ],
+  "metrics": {
+    "duration_seconds": 5833.630827708,
+    "processed": 10000,
+    "errors": 0,
+    "rate_limited": 177
+  }
+}
 
 
+
+go run cmd/counter/main.go
+Select the number of URLs to process:
+1. 1,000 URLs
+2. 10,000 URLs
+3. 40,000 URLs
+Enter your choice (1, 2, or 3): 3
+2024/10/31 01:09:24 Program started at: 2024-10-31T01:09:24+04:00
+Processing URLs 100% |██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| (40000/40000, 2 it/s)              
+
+Final Results:
+{
+  "top_words": [
+    {
+      "the": 834378
+    },
+    {
+      "and": 370740
+    },
+    {
+      "that": 197614
+    },
+    {
+      "for": 172356
+    },
+    {
+      "with": 128335
+    },
+    {
+      "you": 117269
+    },
+    {
+      "its": 81281
+    },
+    {
+      "but": 81034
+    },
+    {
+      "will": 78858
+    },
+    {
+      "this": 69874
+    }
+  ],
+  "metrics": {
+    "duration_seconds": 23246.827165,
+    "processed": 40000,
+    "errors": 0,
+    "rate_limited": 694
+  }
+}

@@ -33,16 +33,23 @@ func (vwb *ValidWordBank) IsValid(word string) bool {
 func ProcessContent(content string, wordBank *ValidWordBank) []string {
 	words := strings.Fields(content)
 	validWords := make([]string, 0, len(words))
+	buf := make([]byte, 0, 32)
 
 	for _, word := range words {
-		word = strings.ToLower(word)
-		word = strings.Trim(word, ".,!?\"'()[]{}:;")
+		buf = buf[:0]
+		for i := 0; i < len(word); i++ {
+			c := word[i]
+			if c >= 'A' && c <= 'Z' {
+				buf = append(buf, c+32) // to lowercase
+			} else if c >= 'a' && c <= 'z' {
+				buf = append(buf, c)
+			}
+		}
 
-		if wordBank.IsValid(word) {
-			validWords = append(validWords, word)
+		if len(buf) >= 3 && wordBank.IsValid(string(buf)) {
+			validWords = append(validWords, string(buf))
 		}
 	}
-
 	return validWords
 }
 
